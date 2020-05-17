@@ -10,9 +10,17 @@
 
 .navbar-title{
     height: 150px;
+    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 75px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .navbar-links{
@@ -36,4 +44,10 @@
 
 .filler1{
     width: 20px;
+}
+
+.img{
+    height: 100px;
+    width :100px;
+    border-radius: 75;
 }

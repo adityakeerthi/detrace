@@ -20,7 +20,6 @@ var setTreeRouter = require('./routes/setTree');
 var getContentsMDBRouter = require('./routes/getContentsMDB')
 var cors = require('cors');
 
-
 var app = express();
 
 // view engine setup

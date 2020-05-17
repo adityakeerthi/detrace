@@ -33,6 +33,7 @@ class Notification extends Component {
         fetch("http://localhost:3005/checkCorona", requestOptions)
           .then(response => response.text())
           .then(result => {
+              console.log(result);
               this.setState({
                   firstAddress: result
               })
@@ -61,26 +62,19 @@ class Notification extends Component {
           })
           .catch(error => console.log('error', error));
 
-        var notifs = this.state.notifications + [this.state.firstAddress, this.state.secondAddress];
+        var notifs = this.state.notifications
+        notifs.push(this.state.firstAddress);
+        notifs.push(this.state.secondAddress);
+        console.log(notifs);
         this.setState({notifications: notifs})
         
         console.log(this.state.notifications);
 
-        this.notificationHTML = this.state.notifications.map((notification) => {
-            if (notification % 2 === 0) {
-                return (
-                    <NotificationE title={`${notification} of your Depth 1 connections has contracted COVID 19`}/> 
-                )
-            } else {
-                return (
-                    <NotificationE title={`${notification} of your Depth 2+ connections has contracted COVID 19`}/>
-                )
-            }
-        })
-
     }
 
     render() { 
+
+
         return (
             <div className="notification-div">
                 <div className="notification-elements-container">
@@ -88,6 +82,24 @@ class Notification extends Component {
                     
                     {/* <NotificationE title={`${this.state.firstAddress} of your Depth 1 connections has contracted COVID 19`}/>  */}
                     
+                {/* {   this.state.notifications.map((notification) => {
+                        if (notification % 2 === 0) {
+                            return (
+                               <NotificationE title={`${notification} of your Depth 1 connections has contracted COVID 19`}/> 
+                            )
+                        } else {
+                            return (
+                                <NotificationE title={`${notification} of your Depth 2+ connections has contracted COVID 19`}/>
+                            )
+                        }
+                    })
+                    } */}
+
+
+                {this.state.firstAddress ? <NotificationE title={`${this.state.firstAddress} of your Depth 1 connections has contracted COVID 19`}/> : null }
+                {this.state.secondAddress ? <NotificationE title={`${this.state.secondAddress} of your Depth 2+ connections has contracted COVID 19`}/> : null }
+
+
                 </div>
                 <div className="notification-counter-div">
                     <div className="notification-counter">

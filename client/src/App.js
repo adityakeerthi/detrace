@@ -87,7 +87,7 @@ class App extends Component {
                 <Notification address={this.state.account} />
               </Route>
               <Route path="/contacts">
-                <Contact></Contact>
+                <Contact address={this.state.account} ></Contact>
               </Route>
               <Route path="/search">
                 <Search/>

@@ -32,8 +32,6 @@ class Status extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props.address);
-
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         
@@ -50,13 +48,14 @@ class Status extends Component {
           .then(response => response.text())
           .then(result => {
             console.log(typeof result)
-            if (Boolean(result) == true) {
+            // result = Boolean(result);
+            if (result === "true") {
                 this.setState({
-                    status: "YOU DON'T HAVE COVID-19"
+                    status: "You Have Contracted COVID 19"
                 })
             } else {
                 this.setState({
-                    status: "YOU HAVE COVID-19"
+                    status: "You Do Not Have COVID 19"
                 })
             }
           })
@@ -81,7 +80,7 @@ class Status extends Component {
           .then(response => response.text())
           .then(result => {
               this.setState({
-                  status: "You don't have covid"
+                  status: "You Do Not Have COVID 19"
               })
           })
           .catch(error => console.log('error', error));
@@ -104,7 +103,7 @@ class Status extends Component {
           .then(response => response.text())
           .then(result => {
               this.setState({
-                  status: "You have covid"
+                  status: "You Have Contracted COVID 19"
               })
           })
           .catch(error => console.log('error', error));
@@ -116,7 +115,7 @@ class Status extends Component {
         return (
             <div className="status-div">
                 <div className="status-content-div">
-                    <div> Your status: <br /> {this.state.status}</div>  
+                    <div> Your status: <br /> <div style={{fontSize : "30px", margin : "20px"}}>{this.state.status}</div></div>  
                     <div>
                         <Button variant="contained" classes={{ root: classes.accept }} onClick={() => this.nonInfect()}> NOT INFECTED </Button>
                         <Button variant="contained" classes={{ root: classes.report }} onClick={() => this.infect()}> INFECTED </Button>

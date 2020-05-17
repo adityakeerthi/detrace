@@ -8,7 +8,7 @@ class Notification extends Component {
     render() { 
         return (
             <div className="notification-element">
-                <div className="notification-element-title">Depth 1 connection has contracted COVID 19</div>   
+                <div className="notification-element-title">{this.props.title}</div>   
             </div>
         );
     }
