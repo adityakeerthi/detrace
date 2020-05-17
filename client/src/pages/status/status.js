@@ -27,12 +27,29 @@ class Status extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status : "mentally retarded"
+            status : ""
         }
     }
 
     componentDidMount(){
-
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        
+        var raw = JSON.stringify({"address":this.props.address});
+        
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+        
+        fetch("http://localhost:3005/getCovidStatus", requestOptions)
+          .then(response => response.text())
+          .then(result => {
+            console.log(result);
+          })
+          .catch(error => console.log('error', error));
         //HANDLE API CALL AND SET STATE 
     }
 

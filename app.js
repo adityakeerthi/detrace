@@ -18,6 +18,8 @@ var getConnectionRouter = require('./routes/getConnection')
 var getTreeRouter = require('./routes/getTree');
 var setTreeRouter = require('./routes/setTree');
 var getContentsMDBRouter = require('./routes/getContentsMDB')
+var cors = require('cors');
+
 
 var app = express();
 
@@ -26,6 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

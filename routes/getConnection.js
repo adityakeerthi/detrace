@@ -1,7 +1,7 @@
 var express = require('express'); //
 var router = express.Router(); //
 var ethers = require('ethers'); // 
-var contract_address = '0xa8e69ccB8FC56DAC2236fd98fAC952eC3Ca8b3E8'; // 
+var contract_address = '0xdBd355eA392fEA0DbC273719F8dDc3219E8236B8'; // 
 var contract_abi = [
     {
       "constant": true,
@@ -172,12 +172,12 @@ var contract_abi = [
           "type": "address"
         }
       ],
-      "name": "getConnections",
+      "name": "setTree",
       "outputs": [
         {
-          "internalType": "address[][]",
+          "internalType": "address[]",
           "name": "",
-          "type": "address[][]"
+          "type": "address[]"
         }
       ],
       "payable": false,
@@ -186,13 +186,19 @@ var contract_abi = [
     },
     {
       "constant": true,
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
       "name": "getTree",
       "outputs": [
         {
-          "internalType": "address[][]",
+          "internalType": "address[]",
           "name": "",
-          "type": "address[][]"
+          "type": "address[]"
         }
       ],
       "payable": false,
@@ -220,9 +226,79 @@ let Contract = new ethers.Contract(contract_address, contract_abi, customHttpPro
     
 // }) // should work
 
-router.post('/getTree', async function (req, res, next) {
-    r = await Contract.getTree(req.body.address);
-    res.send(r);
+
+
+router.post('/', async function (req, res, next) {
+    var response = []
+    var checked = {}
+    var address = req.body.address
+    var queue = [address]
+
+    while (queue.length > 0){
+      var curAddress = queue[0]
+      console.log(curAddress)
+      await Contract.setTree(curAddress)
+      var nextAddresses = await Contract.getTree(curAddress);
+      console.log("NEXT ADDRESSES:" , nextAddresses)
+      queue.pop(0)
+
+
+      for (let i = 0; i < nextAddresses.length; i++){
+        // 
+        if (checked[nextAddress] !== true){
+          
+        }
+        if (!(nextAddresses[i] in checked)){
+          response.push(nextAddresses[i])
+          checked[nextAddresses[i]] = true
+          queue.push(nextAddresses[i])
+        }
+      }
+    }
+
+
+
+    // while (queue.length !== 0){
+    //   var nextStack = stack
+    //   for (let i=0; i<stack.length; i++) {
+    //     var curAddress = stack[i]
+    //     await Contract.setTree(curAddress)
+    //     var nextAddresses = await Contract.getTree(curAddress);
+    //     nextStack.unshift(nextAddresses);
+        
+    //   }
+    //   stack = nextStack
+      
+    // }
+    // [[#first gen][#second gen][#third gen]]
+
+    // while (stack[0]){
+    //   curAddress = stack[0]
+      
+    //   await Contract.setTree(curAddress)
+    //   var nextAddresses = await Contract.getTree(curAddress);
+    //   console.log(nextAddresses)
+    //   await Contract.clearArr();
+    //   stack.pop(0)
+    //   if (nextAddresses.length > 0){
+    //     for (let i = 0; i < nextAddresses.length; i++){
+    //       if (!(nextAddresses[i] in checked)){
+    //         response.push(nextAddresses[i])
+    //         checked[nextAddresses[i]] = true
+    //         stack.unshift(nextAddresses[0]);
+    //       }
+    //     }
+    //   }
+    // }
+    res.send(response)
+
+
+    // r = await Contract.getTree(req.body.address);
+
+
+    
+    // setTree = await Contract.setTree(address)
+    // res.send(r);
     
 }) // should work
 

@@ -1,7 +1,7 @@
 var express = require('express'); //
 var router = express.Router(); //
 var ethers = require('ethers'); // 
-var contract_address = '0x480Bb6C32f951cEb859bA6E3C90e900D5ac13Dea'; // 
+var contract_address = '0xdBd355eA392fEA0DbC273719F8dDc3219E8236B8'; // 
 var contract_abi = [
     {
       "constant": true,
@@ -172,12 +172,12 @@ var contract_abi = [
           "type": "address"
         }
       ],
-      "name": "getConnections",
+      "name": "setTree",
       "outputs": [
         {
-          "internalType": "address[][]",
+          "internalType": "address[]",
           "name": "",
-          "type": "address[][]"
+          "type": "address[]"
         }
       ],
       "payable": false,
@@ -186,13 +186,19 @@ var contract_abi = [
     },
     {
       "constant": true,
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
       "name": "getTree",
       "outputs": [
         {
-          "internalType": "address[][]",
+          "internalType": "address[]",
           "name": "",
-          "type": "address[][]"
+          "type": "address[]"
         }
       ],
       "payable": false,
@@ -214,7 +220,7 @@ const customHttpProvider = new ethers.providers.JsonRpcProvider(URL);
 let Contract = new ethers.Contract(contract_address, contract_abi, customHttpProvider.getSigner(0));
 
 router.post('/', async function (req, res, next) {
-    r = await Contract.getCovidBalance(req.body.address);
+    r = await Contract.getCovidStatus(req.body.address);
     res.send(r);
 })
 

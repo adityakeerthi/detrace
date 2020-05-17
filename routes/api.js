@@ -2,7 +2,7 @@ var express = require('express'); //
 var router = express.Router(); //
 var ethers = require('ethers'); // 
 // var IPFS = require('ipfs-api'); // ipfs
-var contract_address = '0xa8e69ccB8FC56DAC2236fd98fAC952eC3Ca8b3E8'; // 
+var contract_address = '0xdBd355eA392fEA0DbC273719F8dDc3219E8236B8'; // 
 var contract_abi = [
     {
       "constant": true,

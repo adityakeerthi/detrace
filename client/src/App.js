@@ -76,7 +76,7 @@ class App extends Component {
           <div className="content-div">
             <Switch>
               <Route path="/status">
-                <Status/>
+                <Status address={this.state.account} />
               </Route>
               <Route path="/notifications">
                 <Notification/>

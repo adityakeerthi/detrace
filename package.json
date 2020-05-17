@@ -10,14 +10,11 @@
     "comp-sass": "sass scss/bootstrap.scss public/stylesheets/style.css"
   },
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^0.19.2",
-=======
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
->>>>>>> bb7d25763fbc788f144710fef363dd8d212cad27
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ethers": "^4.0.47",
