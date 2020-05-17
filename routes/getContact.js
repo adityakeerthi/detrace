@@ -1,7 +1,7 @@
 var express = require('express'); // express
 var router = express.Router();
 var ethers = require('ethers'); // 
-const contract_address = '0xdBd355eA392fEA0DbC273719F8dDc3219E8236B8'; // 
+const contract_address = '0x763cE4e970c9038Aac27B97fc048B8F72EEE82de'; // 
 const contract_abi = [
   {
     "constant": true,
@@ -172,12 +172,12 @@ const contract_abi = [
         "type": "address"
       }
     ],
-    "name": "getConnections",
+    "name": "setTree",
     "outputs": [
       {
-        "internalType": "address[][]",
+        "internalType": "address[]",
         "name": "",
-        "type": "address[][]"
+        "type": "address[]"
       }
     ],
     "payable": false,
@@ -186,13 +186,19 @@ const contract_abi = [
   },
   {
     "constant": true,
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
     "name": "getTree",
     "outputs": [
       {
-        "internalType": "address[][]",
+        "internalType": "address[]",
         "name": "",
-        "type": "address[][]"
+        "type": "address[]"
       }
     ],
     "payable": false,

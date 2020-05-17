@@ -7,7 +7,9 @@ import "./contact.css"
 class Contact extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {
+            address : ""
+        }
     }
     render() { 
         return (
@@ -16,7 +18,7 @@ class Contact extends Component {
                     <div className="contact-title">Add Contacts</div>
                     <div className="contact-add-div">
                         <div className="filler2"></div>
-                        <TextField id="standard-basic" label="Enter an Address" />
+                        <TextField id="standard-basic" label="Enter an Address"/>
                         <div className="filler2"></div>
                         <Button variant="contained" color="primary"> ADD CONTACT </Button>
                     </div>

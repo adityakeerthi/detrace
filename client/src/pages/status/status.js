@@ -32,6 +32,8 @@ class Status extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props.address);
+
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         
@@ -47,21 +49,65 @@ class Status extends Component {
         fetch("http://localhost:3005/getCovidStatus", requestOptions)
           .then(response => response.text())
           .then(result => {
-            console.log(result);
+            console.log(typeof result)
+            if (Boolean(result) == true) {
+                this.setState({
+                    status: "YOU DON'T HAVE COVID-19"
+                })
+            } else {
+                this.setState({
+                    status: "YOU HAVE COVID-19"
+                })
+            }
           })
           .catch(error => console.log('error', error));
         //HANDLE API CALL AND SET STATE 
     }
 
     nonInfect(){
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
         
-        //HANDLE API CALL
-
+        var raw = JSON.stringify({"address":this.props.address,"status":false});
+        
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+        
+        fetch("http://localhost:3005/changeCovidStatus", requestOptions)
+          .then(response => response.text())
+          .then(result => {
+              this.setState({
+                  status: "You don't have covid"
+              })
+          })
+          .catch(error => console.log('error', error));
     }
 
     infect(){
-    
-        //HANDLE API CALL
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        
+        var raw = JSON.stringify({"address":this.props.address,"status":true});
+        
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+        
+        fetch("http://localhost:3005/changeCovidStatus", requestOptions)
+          .then(response => response.text())
+          .then(result => {
+              this.setState({
+                  status: "You have covid"
+              })
+          })
+          .catch(error => console.log('error', error));
     }
 
     render() { 
@@ -70,7 +116,7 @@ class Status extends Component {
         return (
             <div className="status-div">
                 <div className="status-content-div">
-                    <div>Your status: {this.state.status}</div>  
+                    <div> Your status: <br /> {this.state.status}</div>  
                     <div>
                         <Button variant="contained" classes={{ root: classes.accept }} onClick={() => this.nonInfect()}> NOT INFECTED </Button>
                         <Button variant="contained" classes={{ root: classes.report }} onClick={() => this.infect()}> INFECTED </Button>

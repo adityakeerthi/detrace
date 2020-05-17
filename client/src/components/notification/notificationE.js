@@ -6,7 +6,11 @@ class Notification extends Component {
         this.state = {  }
     }
     render() { 
-        return (  );
+        return (
+            <div className="notification-element">
+                <div className="notification-element-title">Depth 1 connection has contracted COVID 19</div>   
+            </div>
+        );
     }
 }
  

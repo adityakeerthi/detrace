@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// var geoDataRouter = require('./routes/geoData');
+var geoDataRouter = require('./routes/geoData');
 // var apiRouter = require('./routes/api');
 var getCovidStatusRouter = require('./routes/getCovidStatus');
 var changeCovidStatusRouter = require('./routes/changeCovidStatus');
@@ -46,9 +46,10 @@ app.use('/getConnection', getConnectionRouter);
 app.use('/getTree', getTreeRouter);
 app.use('/setTree', setTreeRouter);
 app.use('/getContentsMDB', getContentsMDBRouter);
+app.use('/geoData', geoDataRouter);
 
 // app.use('/api', apiRouter);
-// app.use('/geoData', geoDataRouter);
+app.use('/geoData', geoDataRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

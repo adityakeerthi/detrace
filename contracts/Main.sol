@@ -39,27 +39,46 @@ contract Main {
         contactTree[user].contacts.push(_contact);
     }
     
-
+    uint256 totalCorona;
     //These two functions return the value secondary corona contacts and first gen
-    function checkCorona(address user) public returns (uint256) {
+    function setCheckCorona(address user) public returns (uint256) {
         uint256 totalCorona = 0;
         uint256 arrayLength = contactTree[user].contacts.length;
         for (uint i = 0; i < arrayLength; i++) {
             if (covidStatus[contactTree[user].contacts[i]] = true) {
                 totalCorona++;
             }
-        return totalCorona;
         }
     }
+
+    function getCheckCorona() public view returns (uint256) {
+           return totalCorona;
+    }
+
+    function clearCheckCorona() public {
+        totalCorona = 0;
+        
+    }
     
-    function checkSecondary(address user) public returns (uint256) {
+    uint256 secondaryCorona;
+    function setcheckSecondary(address user) public returns (uint256) {
         uint256 secondaryCorona = 0;
         uint256 arrayLength = contactTree[user].contacts.length;
          for (uint i = 0; i < arrayLength; i++) {
-             secondaryCorona = secondaryCorona + checkCorona(contactTree[user].contacts[i]);
+             setCheckCorona(contactTree[user].contacts[i]);
+             secondaryCorona = secondaryCorona + getCheckCorona();
          }
          return secondaryCorona;
     }
+
+    function getcheckSecondary(address user) public view returns (uint256) {
+        return secondaryCorona;
+    }
+
+    function clearCheckSecondary() public {
+        secondaryCorona = 0; 
+    }
+    
     
  
     address[] connections;

@@ -1,7 +1,7 @@
 var express = require('express'); //
 var router = express.Router(); //
 var ethers = require('ethers'); // 
-var contract_address = '0xdBd355eA392fEA0DbC273719F8dDc3219E8236B8'; // 
+var contract_address = '0x763cE4e970c9038Aac27B97fc048B8F72EEE82de'; // 
 var contract_abi = [
     {
       "constant": true,
@@ -226,33 +226,40 @@ let Contract = new ethers.Contract(contract_address, contract_abi, customHttpPro
     
 // }) // should work
 
-
+const unique = (value, index, self) => {
+  return self.indexOf(value) === index
+}
 
 router.post('/', async function (req, res, next) {
-    var response = []
     var checked = {}
     var address = req.body.address
     var queue = [address]
+    var response = {}
+    response["original"] = address
 
     while (queue.length > 0){
       var curAddress = queue[0]
+      response[curAddress] = []
+      
       console.log(curAddress)
       await Contract.setTree(curAddress)
       var nextAddresses = await Contract.getTree(curAddress);
+      await Contract.clearArr();
+      nextAddresses = nextAddresses.filter(unique)
       console.log("NEXT ADDRESSES:" , nextAddresses)
-      queue.pop(0)
+      queue.shift()
 
 
       for (let i = 0; i < nextAddresses.length; i++){
         // 
-        if (checked[nextAddress] !== true){
-          
-        }
-        if (!(nextAddresses[i] in checked)){
-          response.push(nextAddresses[i])
+        if (checked[nextAddresses[i]] === undefined){
+          response[curAddress].push(nextAddresses[i])
           checked[nextAddresses[i]] = true
           queue.push(nextAddresses[i])
         }
+        //if (!(nextAddresses[i] in checked)){
+          
+        //}
       }
     }
 

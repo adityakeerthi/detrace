@@ -9,6 +9,8 @@ import Notification from "./pages/notification/notification.js"
 import Search from "./pages/search/search.js"
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 import Contact from "./pages/contact/contact.js"
+import Map from "./pages/map/map.js"
+
 
 class App extends Component {
   constructor() {
@@ -19,15 +21,19 @@ class App extends Component {
       account: null,
       ipfsDB: null,
       longitude: null,
-      latitude: null,
+      latitude: null
     }
   }
 
   showPosition = (pos) => {
+    
     this.setState({
       latitude: pos.coords.latitude,
       longitude: pos.coords.longitude,
     })
+
+    // console.log(this.state.latitude)
+    
   } 
 
   componentDidMount = async () => {
@@ -62,7 +68,6 @@ class App extends Component {
       alert("YOU NEED TO GIVE YOUR LOCATION FOR THIS TO WORK") // yes this is so smart look at me
     }
 
-
   };
 
   render() {
@@ -79,13 +84,16 @@ class App extends Component {
                 <Status address={this.state.account} />
               </Route>
               <Route path="/notifications">
-                <Notification/>
+                <Notification address={this.state.account} />
               </Route>
               <Route path="/contacts">
                 <Contact></Contact>
               </Route>
               <Route path="/search">
                 <Search/>
+              </Route>
+              <Route path="/map">
+                <Map/>
               </Route>
             </Switch>
           </div>

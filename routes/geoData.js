@@ -99,7 +99,7 @@ const uploadToMDB = async (address, longitude, latitude, hash) => {
 }
 
 /* GET home page. */
-router.get('/', async function (req, res, next) {
+router.post('/', async function (req, res, next) {
     const WALLET_ADDRESS = req.body.wallet;
     const GEO_DATA = req.body.geoData;
     const LONGITUDE = GEO_DATA.longitude;

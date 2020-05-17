@@ -1,7 +1,7 @@
 var express = require('express'); // express
 var router = express.Router();
 var ethers = require('ethers'); // 
-const contract_address = '0xdBd355eA392fEA0DbC273719F8dDc3219E8236B8'; // 
+const contract_address = '0x763cE4e970c9038Aac27B97fc048B8F72EEE82de'; // 
 const contract_abi = [
   {
     "constant": true,

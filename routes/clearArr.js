@@ -1,7 +1,7 @@
 var express = require('express'); //
 var router = express.Router(); //
 var ethers = require('ethers'); // 
-var contract_address = '0xdBd355eA392fEA0DbC273719F8dDc3219E8236B8'; // 
+var contract_address = '0x763cE4e970c9038Aac27B97fc048B8F72EEE82de'; // 
 var contract_abi = [
     {
       "constant": true,
