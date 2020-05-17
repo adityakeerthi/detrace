@@ -1,0 +1,39 @@
+.navbar-div{
+    width: 240px;
+    height: 100vh;
+    background: #797efc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 5px #E5E9F2;
+}
+
+.navbar-title{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-links{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.navbar-link{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: 0.1s linear all;
+}
+
+.navbar-link:hover{
+    background: #5e62ec;
+}
+
+.filler1{
+    width: 20px;
+}
