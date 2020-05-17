@@ -220,8 +220,9 @@ const customHttpProvider = new ethers.providers.JsonRpcProvider(URL);
 let Contract = new ethers.Contract(contract_address, contract_abi, customHttpProvider.getSigner(0));
 
 router.post("/", async (req, res, next) => {
-    r = await Contract.getTree(req.body.address);
-    res.send(r);
+    directContents = await Contract.getTree(req.body.address);
+    res.send(directContents);
 });
 
+module.exports = router;
 module.exports = router;

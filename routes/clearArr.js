@@ -213,7 +213,7 @@ const URL = "HTTP://127.0.0.1:7545";
 const customHttpProvider = new ethers.providers.JsonRpcProvider(URL);
 let Contract = new ethers.Contract(contract_address, contract_abi, customHttpProvider.getSigner(0));
 
-router.post("/", async (req, rest, next) => {
+router.get("/", async (req, rest, next) => {
     await Contract.clearArr();
     res.send("Cleared Array");
 });
