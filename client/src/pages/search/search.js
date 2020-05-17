@@ -8,199 +8,199 @@ import Button from '@material-ui/core/Button';
 import Tree from 'react-tree-graph';
 import 'react-tree-graph/dist/style.css'
 
-// let data = {
-// 	name: 'Parent',
-// 	children: [
-//         {
-//         name: 'Depth 1',
-//         children : [
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             },
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             },
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             }
-//         ]
-//         }, 
-//         {
-//         name: 'Depth 1',
-//         children : [
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             },
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             },
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             }
-//         ]
-//         }, 
-//         {
-//         name: 'Depth 1',
-//         children : [
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             },
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             },
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             }
-//         ]
-//         }, 
-//         {
-//         name: 'Depth 1',
-//         children : [
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             },
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             },
-//             {
-//                 name : 'Depth 2',
-//                 children : [
-//                     {
-//                         name : 'Depth 3'
-//                     },
-//                     {
-//                         name : 'gay 3'
-//                     },
-//                     {
-//                         name : 'Depth 3'
-//                     }
-//                 ]
-//             }
-//         ]
-//         }
-//     ]
-// };
+let data = {
+	name: 'Parent',
+	children: [
+        {
+        name: 'Depth 1',
+        children : [
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            },
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            },
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            }
+        ]
+        }, 
+        {
+        name: 'Depth 1',
+        children : [
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            },
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            },
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            }
+        ]
+        }, 
+        {
+        name: 'Depth 1',
+        children : [
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            },
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            },
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            }
+        ]
+        }, 
+        {
+        name: 'Depth 1',
+        children : [
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            },
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            },
+            {
+                name : 'Depth 2',
+                children : [
+                    {
+                        name : 'Depth 3'
+                    },
+                    {
+                        name : 'gay 3'
+                    },
+                    {
+                        name : 'Depth 3'
+                    }
+                ]
+            }
+        ]
+        }
+    ]
+};
 
 
 class Search extends Component {
@@ -235,19 +235,21 @@ class Search extends Component {
         fetch("http://localhost:3005/getConnection", requestOptions)
         .then(response => response.text())
         .then(result => {
+            console.log(result)
             result = JSON.parse(result)
             var original = result.original;
-            console.log(result, original)
+            console.log(result)
             var data = {
                 name : original,
                 children : result[original]
             }
             // console.log(result[original])
-            console.log(typeof Object.keys(result))
+            console.log(Object.keys(result))
             console.log(typeof original)
             for (var i = 0; i < data.children.length; i++){
                 data.children.push({name : result[original]}) 
             }
+            this.setState({data : data})
             console.log(data)
         })
         .catch(error => console.log('error', error));
@@ -266,7 +268,7 @@ class Search extends Component {
                 
                 <Tree
                 animated={true}
-                data={this.state.data}
+                data={data}
                 circleProps={ {className: 'node', style : {fill : "blue"}}}
                 textProps={ {className: 'node', style : {background : "blue", fontSize : "20px"} } }
                 height={600}

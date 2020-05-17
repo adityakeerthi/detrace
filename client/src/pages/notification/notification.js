@@ -14,6 +14,8 @@ class Notification extends Component {
         }
     }
 
+    notificationHTML = null
+
     componentDidMount(){
 
         var myHeaders = new Headers();
@@ -52,22 +54,28 @@ class Notification extends Component {
         fetch("http://localhost:3005/checkSecondary", requestOptions)
           .then(response => response.text())
           .then(result => {
+              console.log(result, "secondary stuff")
               this.setState({
                   secondAddress: result
               })
           })
           .catch(error => console.log('error', error));
 
-        this.setState({[this.state.firstAddress, this.state.secondAddress]})
+        var notifs = this.state.notifications + [this.state.firstAddress, this.state.secondAddress];
+        this.setState({notifications: notifs})
         
-        const notificationHTML = notifications.map((notification) => {
-            notifi
-            return (
-                <NotificationE title="Depth 1 connection has contracted COVID 19"/> 
- 
-            )
+        console.log(this.state.notifications);
 
-
+        this.notificationHTML = this.state.notifications.map((notification) => {
+            if (notification % 2 === 0) {
+                return (
+                    <NotificationE title={`${notification} of your Depth 1 connections has contracted COVID 19`}/> 
+                )
+            } else {
+                return (
+                    <NotificationE title={`${notification} of your Depth 2+ connections has contracted COVID 19`}/>
+                )
+            }
         })
 
     }
@@ -77,16 +85,8 @@ class Notification extends Component {
             <div className="notification-div">
                 <div className="notification-elements-container">
                     <div className="notification-title">My Notifications</div>
-
-
-
-                    <NotificationE title="Depth 1 connection has contracted COVID 19"/>
-                    <NotificationE title="Depth 1 connection has contracted COVID 19"/>
-                    <NotificationE title="Depth 1 connection has contracted COVID 19"/>
-                    <NotificationE title="Depth 1 connection has contracted COVID 19"/>
-
-
-
+                    
+                    {/* <NotificationE title={`${this.state.firstAddress} of your Depth 1 connections has contracted COVID 19`}/>  */}
                     
                 </div>
                 <div className="notification-counter-div">
@@ -95,7 +95,7 @@ class Notification extends Component {
                             <div className="notification-counter-title">
                                 Direct Connection Cases:
                             </div>
-                            <div className="counter-num">10</div>
+                            <div className="counter-num">{this.state.firstAddress}</div>
                             <div style={{background : "#ed6b6b", width : "40%", height : "20px", borderRadius : "10px", marginTop : "60px"}}></div>
                             <div style={{background : "#ed6b6b", width : "70%", height : "30px", borderRadius : "20px", marginTop : "10px"}}></div>
                         </div>
@@ -103,7 +103,7 @@ class Notification extends Component {
                             <div className="notification-counter-title">
                                 Indirect Connection Cases:
                             </div>
-                            <div className="counter-num">112</div>
+                            <div className="counter-num">{this.state.secondAddress}</div>
                             <div style={{background : "#eded6b", width : "40%", height : "20px", borderRadius : "10px", marginTop : "60px"}}></div>
                             <div style={{background : "#eded6b", width : "70%", height : "30px", borderRadius : "20px", marginTop : "10px"}}></div>
                         </div>
