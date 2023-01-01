@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+.search-div{
+    width: 100%;
+    min-height: 100vh;
+    background: #f4ecff;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-title{
+    width: 100%;
+    margin-top: 100px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 27px;
+    color: rgb(117, 117, 117);
+    display: flex;
+    margin-left: 60px;
+    margin-bottom: 30px;
+}
+
+.search-field{
+    width: 100%;
+    display: flex;
+    margin-left: 60px;
+    height: 40px;
+}
+
+.tree-div{
+    margin-top: 20px;
+    width: 100%;
+    flex: 1;    
+}
+
+.node{
+    color: red;
+    background: blue;
+    border: 1px solid red;  
+}

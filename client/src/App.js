@@ -1,71 +1,104 @@
 import React, { Component } from "react";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
-
+import { ethers } from 'ethers';
 import "./App.css";
 
+import Navbar from "./components/navbar/navbar.js"
+import Status from "./pages/status/status.js"
+import Notification from "./pages/notification/notification.js"
+import Search from "./pages/search/search.js"
+import {BrowserRouter, Switch, Route} from "react-router-dom"
+import Contact from "./pages/contact/contact.js"
+import Map from "./pages/map/map.js"
+
+
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  constructor() {
+    super();
+    this.state ={
+      web3: null,
+      accounts: null,
+      account: null,
+      ipfsDB: null,
+      longitude: null,
+      latitude: null
+    }
+  }
+
+  showPosition = (pos) => {
+    
+    this.setState({
+      latitude: pos.coords.latitude,
+      longitude: pos.coords.longitude,
+    })
+
+    // console.log(this.state.latitude)
+    
+  } 
 
   componentDidMount = async () => {
     try {
-      // Get network provider and web3 instance.
       const web3 = await getWeb3();
 
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
-
-      // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SimpleStorageContract.networks[networkId];
-      const instance = new web3.eth.Contract(
-        SimpleStorageContract.abi,
-        deployedNetwork && deployedNetwork.address,
-      );
+      
+      const account = accounts[0];
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.runExample);
+      this.setState({web3, accounts, account});
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
         `Failed to load web3, accounts, or contract. Check console for details.`,
       );
       console.error(error);
+
+      // const signer = (new ethers.providers.Web3Provider(window.ethereum)).getSigner() 
+      // this.setState({
+      //   signer 
+      // })
     }
-  };
 
-  runExample = async () => {
-    const { accounts, contract } = this.state;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      // do something that says YOU NEED TO GIVE YOUR LOCATION FOR THIS TO WORK
+      alert("YOU NEED TO GIVE YOUR LOCATION FOR THIS TO WORK") // yes this is so smart look at me
+    }
 
-    // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[0] });
-
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
-
-    // Update state with the result.
-    this.setState({ storageValue: response });
   };
 
   render() {
-    if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+    if (!this.state.account) {
+      return <div> Loading Web3, accounts </div>;
     }
     return (
-      <div className="App">
-        <h1>Good to Go!</h1>
-        <p>Your Truffle Box is installed and ready.</p>
-        <h2>Smart Contract Example</h2>
-        <p>
-          If your contracts compiled and migrated successfully, below will show
-          a stored value of 5 (by default).
-        </p>
-        <p>
-          Try changing the value stored on <strong>line 40</strong> of App.js.
-        </p>
-        <div>The stored value is: {this.state.storageValue}</div>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar></Navbar>
+          <div className="content-div">
+            <Switch>
+              <Route path="/status">
+                <Status address={this.state.account} />
+              </Route>
+              <Route path="/notifications">
+                <Notification address={this.state.account} />
+              </Route>
+              <Route path="/contacts">
+                <Contact address={this.state.account} ></Contact>
+              </Route>
+              <Route path="/search">
+                <Search/>
+              </Route>
+              <Route path="/map">
+                <Map/>
+              </Route>
+            </Switch>
+          </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

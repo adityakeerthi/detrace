@@ -3,9 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.9.14",
+    "@material-ui/icons": "^4.9.1",
+    "dotenv": "^8.2.0",
+    "ethers": "^4.0.47",
     "react": "16.11.0",
     "react-dom": "16.11.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.2.0",
+    "react-tree-graph": "^4.1.0",
+    "rsuite": "^4.6.0",
     "web3": "1.2.2"
   },
   "scripts": {

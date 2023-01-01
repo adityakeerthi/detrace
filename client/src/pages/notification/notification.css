@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+.notification-div{
+    width: 100%;
+    min-height: 100vh;
+    background: #f4ecff;
+    display: flex;
+}
+
+.notification-title{
+    width: 100%;
+    margin-top: 100px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 27px;
+    color: rgb(117, 117, 117);
+    display: flex;
+    margin-left: 60px;
+    margin-bottom: 30px;
+}
+
+.notification-element{
+    width: 800px;
+    height: 80px;
+    margin-left: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 5px;
+}
+
+.notification-element-title{
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    margin: 10px;
+    
+}
+
+.notification-elements-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-counter-div{
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.notification-counter{
+    width: 500px;
+    height: 350px;
+    margin-top: 170px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 5px;
+    display: flex;
+
+}
+
+.notification-counter-inner{
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notification-counter-title{
+    width: 70%;
+    margin-top: 20px;
+    height: fit-content;
+}
+
+.counter-num{
+    margin-top: 40px;
+    font-size: 60px;
+    width: 70%;
+}
